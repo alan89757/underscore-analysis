@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>underscore</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+  <script src="./underscore1.0.0.js"></script>
+  <!-- <script src="./underscore.js"></script> -->
+</head>
+<body>
+  <div>111</div>
+  <script>
+    // 查看underscore挂在了哪些属性
+    // console.log(_({name: 'underscore'}));
+    
+    /*
+    // 数组去重
+    var arr = [1,2,3,4,5,2,4,5,3];
+    console.log(_.uniq(arr, function(item) {
+      return item - 2;
+    }));
+    */
+   /*
+    // _.each
+    var arr = [1,2,3,4,5,2,4,5,3, "a", "b", "A"];
+    var result = _(arr).uniq(function(val) {
+      return typeof val === "string" ? val.toLowerCase() : val;
+    });
+    console.log(result);  // 直接返回的结果
+    */
+   /*
+   //  链式调用  如果存在chain，就返回underscore对象
+    var arr = [1,2,3,4,5,2,4,5,3, "a", "b", "A"];
+    var result = _.chain(arr).uniq(function(val) {
+      return typeof val === "string" ? val.toLowerCase() : val;
+    });
+      // console.log(result); 
+    */
+
+    /*
+    // _.map 迭代器
+    // var arr = [4, 5, 6]
+    // var result = _.map(arr, function(value, index, obj) {
+    //   return value * 2;
+    // })
+    // console.log(result);  // [8, 10, 12]
+    var arr = [4, 5, 6]
+    var result = _.chain(arr).map(function(value, index, obj) {
+      return value * 2;
+    }).value();
+    console.log(result)
+    */
+    
+    // _.times _.reduce
+    // _.times(5, function(val) {
+    //   console.log(val)
+    // })
+    // var result = _.reduce([1,2,3], function(memo, value, key, obj) {
+    //   console.log(memo)
+    //   return memo + value;
+    // }, 10);
+    // console.log(result)
+    
+    /*
+    // rest参数 字符串逃逸
+    function add(a, rest) {
+      // console.log(rest);    // [3,4,5]
+      return _.reduce(rest, function(memo, value, i, obj) {
+        return memo + value;
+      }, a)
+    }
+
+    var addRest = _.restArgs(add);
+    var result = addRest(1,2,3,4,5);
+    console.log(result)
+    */
+
+    // 字符串逃逸和反逃逸 字符实体
+    // var result = _.escape("<script>alert(1);<\/script>");
+    // document.write("<script>alert(1);<\/script>");
+      // console.log(result);
+    // document.write(result);
+    // document.write("<a href='#'>hello&world</a>");
+    
+    // var result = _.unescape("&lt;script&gt;alert(1);&lt;/script&gt;");
+    // console.log(result);
+    
+    //  模板引擎
+   //  <%= 插入变量 %>  <% js逻辑 %>  <%- 字符串逃逸  %> 
+  // var body = "alert('hello ' + name)"
+  // var fn = new Function("name", body);
+  // console.log(fn)
+  /*
+    // fn编译后
+    (function anonymous(name) {
+      alert('hello ' + name)
+    })
+  */
+  // fn("alan");
+  // 插入变量
+  // var compile = _.template("hello <%= name %>");
+  // var result = compile({name: "alan"})
+  // console.log(result);
+  
+  // js逻辑
+  // var compile = _.template("hello <% alert(1); %>");
+  // var result = compile()
+  // document.write(result)
+
+  // 字符串转义
+    // var compile = _.template("hello <%- value %>");
+    // var result = compile({value: "<a>"});
+    // document.write(result)
+
+    // template支持配置
+    // var compile = _.template("hello <%= data.name %>", { variable: "data"});
+    // var result = compile({name: "alan"})
+    // console.log(result);
+
+    // 乱序 _.shuffle
+    // var arr = [1,2,3,4,5];
+    // var obj = { a: "r", b: "s", c: "t"};
+    // var result = _.shuffle(arr);
+    // console.log(result);
+
+    // 防抖
+  //   function fn(name){
+  //     console.log("hello "+name)
+  //   }
+  //   var callback = _.debounce(fn,1000);
+  //  window.onscroll  = function(){
+  //   callback("alan");
+  //  };
+
+  // 节流
+    function fn(name){
+      console.log("hello "+name)
+    }
+    var callback = _.throttle(fn,3000);
+   window.onscroll  = function(){
+    callback("alan");
+   };
+
+  // 数组/对象截取  _.sample
+    // var result = _.sample([1, 2, 3, 4, 5, 6], 3);
+    // console.log(result);
+
+
+  </script>
+</body>
+</html>
